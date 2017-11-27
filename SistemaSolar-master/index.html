@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<head>
+    <meta enctype="utf-8">
+
+    <meta name="description" content="Pequeña simulación Tri-dimensional de un Sistema Solar con tamaños a Escala realizada con WebGL gracias a THREEjs, Navegación interplanetaria.">
+    <meta name="keywords" content="Sistema,Solar,WebGL,Nasa,escala">
+    <meta name="author" content="Daniel Xutuc (dahngeek)">
+    <meta property="og:title" content="Sistema Solar 3D WebGL using ThreeJS" />
+    <meta property="og:site_name" content="dahngeek Dev" />
+    <meta property="og:url" content="http://dahngeek.com/SistemaSolar/" />
+    <meta property="og:description" content="Pequeña simulación Tri-dimensional de un Sistema Solar con tamaños a Escala realizada con WebGL gracias a THREEjs, Navegación interplanetaria." />
+    <meta property="og:image" content="http://dahngeek.com/SistemaSolar/screenshot.png" />
+    <title>Sistema Solar WebGL - Chrome Experiment</title>
+    <script src='vendor/three.js/build/three.js'></script>
+    <script src="vendor/require.js/require.js"></script>
+    <script src="vendor/three.js/examples/js/Detector.js"></script>
+    <script src="vendor/threex.windowresize.js"></script>
+    <script src="jquery-1.11.1.min.js"></script>
+    <script src="jquery-migrate-1.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="estilos.css">
+</head>
+
+<body style='margin: 0px; background-color: #000; overflow: hidden;'>
+    <div id="controles" style="position: absolute; top: 5px; left: 10px:">
+        <input type="button" id="solar" value="Sistema Solar">
+        <input type="button" title="(0)" id="sol" value="Sol">
+        <input type="button" title="(1)" id="mercurio" value="Mercurio">
+        <input type="button" title="(2)" id="venus" value="Venus">
+        <input type="button" title="(3)" id="tierra" value="Tierra">
+        <input type="button" title="(4)" id="marte" value="Marte">
+        <input type="button" title="(5)" id="jupiter" value="Jupiter">
+        <input type="button" title="(6)" id="saturno" value="Saturno">
+        <input type="button" title="(7)" id="urano" value="Urano">
+        <input type="button" title="(8)" id="neptuno" value="Neptuno">
+
+    </div>
+    <div id="cameracontrols" style="position:absolute; bottom:20px; right: 20px;">
+        <input type="button" title="(M)" id="zoommas" value="+"></input>
+        <input type="button" title="(N)" id="zoommenos" value="-"></input>
+        <input type="button" title="(FLECHA ARRIBA)" id="menosy" value="&uarr;"></input>
+        <input type="button" title="(FLECHA ABAJO)" id="masy" value="&darr;"></input>
+    </div>
+
+    <script type="text/javascript" src="sistema.js"></script>
+</body>
