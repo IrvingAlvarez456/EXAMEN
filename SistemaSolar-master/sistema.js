@@ -1,6 +1,19 @@
 //Iniciamos el Sistema.
 
-
+//Estado Caja es para saber si está extendido u oculta la caja de información.
+var estadocaja = true;
+jQuery(document).ready(function($) {
+    $("#masinfo").click(function() {
+        var estadocaja = true;
+        $(this).fadeOut("slow");
+        $("#contenido").delay(900).slideDown();
+    });
+    $("#cierra").click(function() {
+        var estadocaja = false;
+        $("#contenido").slideUp();
+        $("#masinfo").delay(900).fadeIn("slow");
+    });
+});
 require([], function() {
     // detect WebGL
     if (!Detector.webgl) {
@@ -372,6 +385,22 @@ require([], function() {
     document.getElementById('zoommenos').addEventListener('click', function() {
         camaraaaz = camera.position.z + 0.001;
     }, false);
+    //////////rotacion z
+    var camaraaar = camera.rotation.z;
+    document.getElementById('zoommas').addEventListener('click', function() {
+        camaraaar = camera.rotation.z - 0.001;
+    }, false);
+    document.getElementById('zoommenos').addEventListener('click', function() {
+        camaraaar = camera.rotation.z + 0.001;
+    }, false);
+    //////////rotacion x
+    var camaraaax = camera.rotation.x;
+    document.getElementById('zoommas').addEventListener('click', function() {
+        camaraaax = camera.rotation.x - 0.001;
+    }, false);
+    document.getElementById('zoommenos').addEventListener('click', function() {
+        camaraaax = camera.rotation.x + 0.001;
+    }, false);
     //en el eje Y
     var camaraaay = camera.position.y;
     document.getElementById('masy').addEventListener('click', function() {
@@ -380,19 +409,40 @@ require([], function() {
     document.getElementById('menosy').addEventListener('click', function() {
         camaraaay = camera.position.y + 0.001;
     }, false);
+          //////////rotacion y
+          var camaraaary = camera.rotation.y;
+          document.getElementById('zoommas').addEventListener('click', function() {
+            camaraaary = camera.rotation.y - 0.001;
+        }, false);
+        document.getElementById('zoommenos').addEventListener('click', function() {
+            camaraaary = camera.rotation.y + 0.001;
+        }, false);
+  
     //////////   DEFINIMOS LOS DE PLANETAS ////////////
-    document.addEventListener('keyup', function(event) {
+    document.addEventListener('keydown', function(event) {
         switch (event.keyCode) {
 
             case 8: // prevent browser back 
                 event.preventDefault();
                 break;
-            case 77:
+            case 39:
                 camaraaaz = camera.position.z - 0.001;
                 console.log("maszoom");
                 break;
-            case 78:
+            case 37:
                 camaraaaz = camera.position.z + 0.001;
+                break;
+            case 69:
+                camaraaar = camera.rotation.z - 0.1;
+                break;
+            case 90:
+                camaraaar = camera.rotation.z + 0.1;
+                break;
+            case 81:
+                camaraaax = camera.rotation.x - 0.1;
+                break;
+            case 88:
+                camaraaax = camera.rotation.x + 0.1;
                 break;
             case 38:
                 camaraaay = camera.position.y + 0.001;
@@ -400,31 +450,37 @@ require([], function() {
             case 40:
                 camaraaay = camera.position.y - 0.001;
                 break;
-            case 48:
+            case 87:
+                camaraaary = camera.rotation.y - 0.1;
+                break;
+            case 89:
+                camaraaary = camera.rotation.y + 0.1;
+                break;
+            case 79:
                 $("#sol").click();
                 break;
-            case 49:
+            case 77:
                 $("#mercurio").click();
                 break;
-            case 50:
+            case 86:
                 $("#venus").click();
                 break;
-            case 51:
+            case 84:
                 $("#tierra").click();
                 break;
-            case 52:
+            case 77:
                 $("#marte").click();
                 break;
-            case 53:
+            case 74:
                 $("#jupiter").click();
                 break;
-            case 54:
+            case 83:
                 $("#saturno").click();
                 break;
-            case 55:
+            case 85:
                 $("#urano").click();
                 break;
-            case 56:
+            case 78:
                 $("#neptuno").click();
                 break;
         }
@@ -537,6 +593,9 @@ require([], function() {
         //console.log(camera.position);
         camera.position.z = camaraaaz;
         camera.position.y = camaraaay;
+        camera.rotation.z = camaraaar;
+        camera.rotation.x = camaraaax;
+        camera.rotation.y = camaraaary;
         if (planetaactivo) {
             mesh.position.copy(camera.position);
             meshEstrellas.position.copy(camera.position);
